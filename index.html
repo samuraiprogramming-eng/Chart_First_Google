@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chartinator</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:400,700' rel='stylesheet'
+        type='text/css'>
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script>window.modernizr || document.write('<script src="lib/modernizr/modernizr-custom.js"><\/script>')</script>
+    <!--<script src="lib/html5shiv/html5shiv.js"></script>-->
+
+    <!-- Load jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="lib/jquery-legacy/jquery.js"><\/script>')</script>
+
+    <!-- Chartinator  -->
+    <script src="js/chartinator.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+
+            // Bar Chart Example
+            var chart1 = $('#barChart').chartinator({
+                googleSheetKey: '1kg6f4UVJPpT45D7ucAE8lhsVp8vIUl7bSMM442_DrhI',
+                chartType: 'BarChart',
+                dataTitle: 'Bar Chart Data',
+                tableClass: 'col-table',
+                createTable: 'basic-table',
+                transpose: false,
+                ignoreRow: [],
+                ignoreCol: [],
+                barChart: {
+                    width: null,
+                    height: 400,
+
+                    chartArea: {
+                        left: "20%",
+                        top: 30,
+                        width: "74%",
+                        height: "80%"
+                    },
+                    fontName: 'Roboto',
+                    title: 'Bar Chart',
+                    titleTextStyle: {
+                        fontSize: 'h4'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+                    colors: ['#3691ff'],
+                    isStacked: false,
+
+                    tooltip: {
+                        trigger: 'focus'
+                    }
+                },
+                showTable: 'show'
+            });
+
+            //  Pie Chart Example
+            var chart2 = $('#pieChart').chartinator({
+                rows: [
+                    ['France', 5],
+                    ['Mexico', 2]],
+                createTable: 'table-chart',
+                dataTitle: 'Pie Chart Data - Table Chart',
+                chartType: 'PieChart',
+                chartClass: 'col',
+                tableClass: 'col-table',
+                pieChart: {
+                    width: null,
+                    height: 300,
+
+                    chartArea: {
+                        left: "6%",
+                        top: 30,
+                        width: "94%",
+                        height: "100%"
+                    },
+                    fontSize: 'body',
+                    fontName: 'Roboto',
+                    titleTextStyle: {
+                        fontSize: 'h4'
+                    },
+                    legend: {
+                        position: 'right'
+                    },
+                    colors: ['#94ac27', '#3691ff', '#e248b3', '#f58327', '#bf5cff'],
+                    is3D: true,
+
+                    tooltip: {
+                        trigger: 'focus'
+                    }
+                },
+                showTable: 'show'
+            });
+
+            //  Geo Chart Example
+            var chart3 = $('#geoChart').chartinator({
+                tableSel: '.geoChart',
+                columns: [{ role: 'tooltip', type: 'string' }],
+                colIndexes: [2],
+                rows: [
+                    ['China - 2015'],
+                    ['Colombia - 2015'],
+                    ['France - 2015'],
+                    ['Italy - 2015'],
+                    ['Japan - 2015'],
+                    ['Kazakhstan - 2015'],
+                    ['Mexico - 2015'],
+                    ['Poland - 2015'],
+                    ['Russia - 2015'],
+                    ['Spain - 2015'],
+                    ['Tanzania - 2015'],
+                    ['Turkey - 2015']],
+                ignoreCol: [2],
+                chartType: 'GeoChart',
+                chartAspectRatio: 1.5,
+                chartZoom: 1.75,
+                chartOffset: [-12, 0],
+                chartOptions: {
+                    width: null,
+                    title: 'Geo Chart',
+                    backgroundColor: '#fff',
+                    datalessRegionColor: '#F5F5F5',
+                    region: 'world',
+                    resolution: 'countries',
+                    legend: 'none',
+
+                    colorAxis: {
+                        colors: ['#e0e5c8', '#94ac27']
+                    },
+                    tooltip: {
+                        trigger: 'focus',
+                        isHtml: true
+                    }
+                }
+            });
+
+            //  Column Chart Example
+            var chart4 = $('#columnChart').chartinator({
+
+                // Columns - The columns data-array
+                columns: [
+                    { label: 'Country', type: 'string' },
+                    { label: '2013', type: 'number' },
+                    { label: '2014', type: 'number' },
+                    { label: '2015', type: 'number' }],
+                rows: [
+                    ['China', 18, 11, 9],
+                    ['Japan', 12, 8, 9],
+                    ['Russia', 10, 9, 7],
+                    ['Mexico', 5, 4, 2],
+                    ['Brazil', 6, 2, 1],
+                    ['Italy', 4, 3, 5]],
+                tableClass: 'col-table',
+                createTable: 'basic-table',
+                chartType: 'ColumnChart',
+                dataTitle: 'Column Chart Data',
+                chartAspectRatio: 1.5,
+                columnChart: {
+                    width: null,
+                    chartArea: {
+                        left: "10%",
+                        top: 30,
+                        width: "90%",
+                        height: "65%"
+                    },
+                    fontName: 'Roboto',
+                    title: 'Column Chart',
+
+                    titleTextStyle: {
+                        fontSize: 'h4'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+                    colors: ['#a82180', '#dd61b8', '#ff99e1'],
+                    isStacked: true,
+
+                    tooltip: {
+                        trigger: 'focus'
+                    }
+                },
+                showTable: 'show'
+            });
+
+            //  Area Chart Example
+            var chart5 = $('#areaChart').chartinator({
+                columns: [
+                    { label: 'Country', type: 'string' },
+                    { label: '2013', type: 'number' },
+                    { label: '2014', type: 'number' },
+                    { label: '2015', type: 'number' }],
+                rows: [
+                    ['China', 18, 11, 9],
+                    ['Japan', 12, 8, 9],
+                    ['Russia', 10, 9, 7],
+                    ['Mexico', 5, 4, 2],
+                    ['Brazil', 6, 2, 1],
+                    ['Italy', 4, 3, 5]],
+                createTable: 'table-chart',
+                dataTitle: 'Area Chart Data - Table Chart',
+                chartClass: 'col',
+                tableClass: 'col-table',
+                chartType: 'AreaChart',
+                chartAspectRatio: 1.5,
+                areaChart: {
+                    width: null,
+                    chartArea: {
+                        left: "10%",
+                        top: 40,
+                        width: "85%",
+                        height: "65%"
+                    },
+                    fontName: 'Roboto',
+                    title: 'Area Chart',
+
+                    titleTextStyle: {
+                        fontSize: 'h4'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+
+                    // Array of colours
+                    colors: ['#94ac27', '#3691ff', '#bf5cff'],
+
+                    tooltip: {
+                        trigger: 'focus'
+                    }
+                },
+                showTable: 'show'
+            });
+
+            //  Line Chart Example
+            var chart6 = $('#lineChart').chartinator({
+                columns: [
+                    { label: 'Country', type: 'string' },
+                    { label: '2013', type: 'number' },
+                    { role: 'annotation', type: 'string' },
+                    { label: '2014', type: 'number' },
+                    { role: 'annotation', type: 'string' },
+                    { label: '2015', type: 'number' },
+                    { role: 'annotation', type: 'string' }],
+                rows: [
+                    ['China', 18, '18', 11, '11', 9, '9'],
+                    ['Japan', 12, '12', 8, '8', 9, '9'],
+                    ['Russia', 10, '10', 9, '9', 7, '7'],
+                    ['Mexico', 5, '5', 4, '4', 2, '2'],
+                    ['Brazil', 6, '6', 2, '2', 1, '1'],
+                    ['Italy', 4, '4', 3, '3', 5, '5']],
+                chartType: 'LineChart',
+                // Google Line Chart Options
+                lineChart: {
+                    width: null,
+                    height: 310,
+                    chartArea: {
+                        left: "10%",
+                        top: 40,
+                        width: "85%",
+                        height: "65%"
+                    },
+                    fontName: 'Roboto',
+                    title: 'Line Chart',
+
+                    titleTextStyle: {
+                        fontSize: 'h4'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+                    colors: ['#94ac27', '#3691ff', '#bf5cff'],
+
+                    tooltip: {
+                        trigger: 'focus'
+                    }
+                }
+            });
+
+            //  Table Chart Example
+            var chart7 = $('#tableChart').chartinator({
+                tableSel: '.tableChart',
+                ignoreCol: [2],
+                chartType: 'Table',
+                table: {
+                    title: 'Table Chart',
+                    fontSize: 16,
+                    fontName: 'Roboto',
+                    formatter: {
+                        type: 'BarFormat',
+                        column: 1,
+                        base: 0,
+                        colorNegative: 'red',
+                        colorPositive: 'blue',
+                        drawZeroLine: false,
+                        max: null,
+                        min: 0,
+                        showValue: false,
+                        width: 150
+                    },
+                    allowHtml: true,
+                    alternatingRowStyle: true,
+                    width: null,
+                    page: 'disable',
+                    pageSize: 10,
+                    showRowNumber: false,
+                    sort: 'enable',
+                    sortAscending: false,
+                    sortColumn: 1,
+                    // CSS class names - Default: no classes
+                    cssClassNames: {
+                        headerRow: 'headerRow',
+                        tableRow: 'tableRow',
+                        oddTableRow: 'oddTableRow',
+                        selectedTableRow: 'selectedTableRow',
+                        hoverTableRow: 'hoverTableRow',
+                        headerCell: 'headerCell',
+                        tableCell: 'tableCell',
+                        rowNumberCell: 'rowNumberCell'
+                    }
+                }
+            });
+
+            //  Bubble Chart Example
+            var chart9 = $('#bubbleChart').chartinator({
+                columns: ['Module', 'Attendance rate', 'Average Grade', 'Course', 'Number of Students'],
+                rows: [
+                    ['HTML', .90, .75, 'Front-End Dev', 22],
+                    ['CSS', .88, .82, 'Front-End Dev', 25],
+                    ['JS', .92, .78, 'Front-End Dev', 21],
+                    ['PHP', .95, .75, 'Back-End Dev', 28],
+                    ['Node', .88, .73, 'Back-End Dev', 20],
+                    ['UX', .91, .85, 'Design', 20],
+                    ['UI', .85, .75, 'Design', 26]
+                ],
+                chartType: 'BubbleChart',
+                chartAspectRatio: 1.5,
+                chartOptions: {
+                    width: null,
+                    chartArea: {
+                        left: "10%",
+                        top: 40,
+                        width: "85%",
+                        height: "65%"
+                    },
+                    fontName: 'Roboto',
+                    title: 'Bubble Chart',
+                    hAxis: {
+                        title: 'Attendance Rate',
+                        format: '#%'
+                    },
+                    vAxis: {
+                        title: 'Average Grade',
+                        format: '#%'
+                    },
+                    titleTextStyle: {
+                        fontSize: 'h4'
+                    },
+                    legend: {
+                        position: 'bottom'
+                    },
+                    colors: ['#94ac27', '#3691ff', '#bf5cff'],
+
+                    tooltip: {
+                        trigger: 'focus'
+                    }
+                }
+            });
+
+        });
+    </script>
+
+    <!-- Responsive Menu -->
+    <link href="lib/jquery-responsive-menu/responsive-menu.css" rel="stylesheet">
+    <script src="lib/jquery-responsive-menu/responsive-menu.js"></script>
+    <script>
+        jQuery(function ($) { var menu = $('.rm-nav').rMenu({ minWidth: '1060px' }); });
+    </script>
+
+</head>
+
+<body>
+    <section id="charts1" class="charts">
+        <div class="wrapper-flex">
+
+            <div id="barChart" class="chart col"></div>
+
+            <table id="myTable" class="geoChart tableChart data-table col-table">
+                <caption>Student Nationalities Table</caption>
+                <tr>
+                    <th scope="col" data-type="string">Country</th>
+                    <th scope="col" data-type="number">Number of Students</th>
+                    <th scope="col" data-role="annotation">Annotation</th>
+                </tr>
+                <tr>
+                    <td>China</td>
+                    <td align="right">20</td>
+                    <td align="right">20</td>
+                </tr>
+                <tr>
+                    <td>Colombia</td>
+                    <td align="right">5</td>
+                    <td align="right">5</td>
+                </tr>
+                <tr>
+                    <td>France</td>
+                    <td align="right">3</td>
+                    <td align="right">3</td>
+                </tr>
+                <tr>
+                    <td>Italy</td>
+                    <td align="right">1</td>
+                    <td align="right">1</td>
+                </tr>
+                <tr>
+                    <td>Japan</td>
+                    <td align="right">18</td>
+                    <td align="right">18</td>
+                </tr>
+                <tr>
+                    <td>Kazakhstan</td>
+                    <td align="right">1</td>
+                    <td align="right">1</td>
+                </tr>
+                <tr>
+                    <td>Mexico</td>
+                    <td align="right">1</td>
+                    <td align="right">1</td>
+                </tr>
+                <tr>
+                    <td>Poland</td>
+                    <td align="right">1</td>
+                    <td align="right">1</td>
+                </tr>
+                <tr>
+                    <td>Russia</td>
+                    <td align="right">11</td>
+                    <td align="right">11</td>
+                </tr>
+                <tr>
+                    <td>Spain</td>
+                    <td align="right">2</td>
+                    <td align="right">2</td>
+                </tr>
+                <tr>
+                    <td>Tanzania</td>
+                    <td align="right">1</td>
+                    <td align="right">1</td>
+                </tr>
+                <tr>
+                    <td>Turkey</td>
+                    <td align="right">2</td>
+                    <td align="right">2</td>
+                </tr>
+
+            </table>
+
+            <div class="col">
+                <div id="geoChart" class="chart"></div>
+            </div>
+
+            <div class="col">
+                <div id="lineChart" class="lineChart chart"></div>
+            </div>
+
+            <table id="pieChart" class="pieChart data-table col-table">
+                <caption>Pie Chart</caption>
+                <tr>
+                    <th scope="col" data-type="string">Country</th>
+                    <th scope="col" data-type="number">Number of Students</th>
+                </tr>
+                <tr>
+                    <td>China</td>
+                    <td align="right">20</td>
+                </tr>
+
+                <tr>
+                    <td>Japan</td>
+                    <td align="right">18</td>
+                </tr>
+
+                <tr>
+                    <td>Russia</td>
+                    <td align="right">11</td>
+                </tr>
+            </table>
+
+            <div id="areaChart" class="areaChart chart col"></div>
+
+            <div class="col">
+                <div id="bubbleChart" class="bubbleChart chart"></div>
+            </div>
+
+            <div class="col">
+                <div id="tableChart" class="chart"></div>
+            </div>
+
+            <div id="columnChart" class="columnChart chart col"></div>
+
+        </div><!-- .wrapper-flex -->
+    </section>
+
+
+    <!-- google-code-prettify -->
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <script>$(function () { $('pre').addClass('prettyprint'); })</script>
+
+</body>
+
+</html>
